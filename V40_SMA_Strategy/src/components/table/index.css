@@ -1,0 +1,21 @@
+th,td{
+    border: 1px solid #d9e4f8;
+    padding: 12px;
+    text-align: center;
+}
+th{
+    background-color: #ccdbf5;
+    font-weight: bold;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .no-data-row{
+    padding: 10px;
+  }
+  
