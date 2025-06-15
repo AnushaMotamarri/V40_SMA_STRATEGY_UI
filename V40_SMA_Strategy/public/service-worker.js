@@ -39,28 +39,41 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const request = event.request;
 
-  // Only cache GET requests (skip POST, etc.)
+  // Only handle GET requests
   if (request.method !== 'GET') return;
 
+  const url = new URL(request.url);
+
+  // 👇 Use Network First for API requests (e.g., /sma/all or /api/*)
+  if (url.pathname.startsWith('/sma')) {
+    event.respondWith(
+      fetch(request)
+        .then((networkResponse) => {
+          // Optionally cache the API response if desired
+          const clone = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(request, clone);
+          });
+          return networkResponse;
+        })
+        .catch(() => caches.match(request)) // fallback to cache on failure
+    );
+    return;
+  }
+
+  // ✅ Use Cache First for everything else (static files)
   event.respondWith(
     caches.match(request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
+      if (cachedResponse) return cachedResponse;
 
-      return fetch(request)
-        .then((response) => {
-          // Clone response before caching
-          const responseClone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(request, responseClone);
-          });
-          return response;
-        })
-        .catch(() => {
-          // You can return a fallback response here
-          console.error('[SW] Fetch failed for:', request.url);
+      return fetch(request).then((response) => {
+        const responseClone = response.clone();
+        caches.open(CACHE_NAME).then((cache) => {
+          cache.put(request, responseClone);
         });
+        return response;
+      });
     })
   );
 });
+
