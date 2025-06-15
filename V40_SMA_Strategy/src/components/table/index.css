@@ -8,6 +8,7 @@ th{
     font-weight: bold;
 }
 table {
+  border: 1px solid #d9e4f8;
     border-collapse: collapse;
     width: 100%;
     font-family: Arial, sans-serif;
@@ -18,4 +19,6 @@ table {
   .no-data-row{
     padding: 10px;
   }
-  
+  .table-container{
+    overflow: auto;
+  }

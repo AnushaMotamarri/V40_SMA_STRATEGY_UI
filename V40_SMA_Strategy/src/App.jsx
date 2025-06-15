@@ -1,16 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
-import SmaTable from './view/sma_table'
 
-function App() {
+import routes from './routes.jsx'
+// function App() {
 
-  return (
-    <div>
-      <SmaTable/>
-    </div>
-  )
+//   return (
+//     <div>
+//       <SmaTable/>
+//     </div>
+//   )
+// }
+
+// export default App
+
+// App.jsx
+import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
+
+
+function AppRoutes() {
+  const element = useRoutes(routes);
+  return element;
 }
 
-export default App
+function App() {
+  return (
+    <Router>
+      <AppRoutes />
+    </Router>
+  );
+}
+
+export default App;

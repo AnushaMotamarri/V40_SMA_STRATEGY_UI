@@ -11,7 +11,7 @@ const columnConfigs = [
 const Table = ({stocks=[]}) => {
 
   return (
-    <div>
+    <div className="table-container">
        {!stocks?.length ? <div className="no-data-row">No Data Found.</div>:
        <table border="1" cellPadding="10">
        <thead>

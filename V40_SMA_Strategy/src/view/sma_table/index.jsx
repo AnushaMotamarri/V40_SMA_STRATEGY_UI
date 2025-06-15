@@ -16,25 +16,24 @@ const config =[{
     title:'No Signal',
     accessor:'noSignal'
 }]
-function GetComponent({title='',data=[]}){
 
-    return <Accordion title={title}>
-        <Table stocks={data}/>
-    </Accordion>
-  }
+
 function SmaTable() {
     const [smaDetails,setSmaDetails] = useState({});
     const [loading,setLoading] = useState(true);
-    const [error,setError] = useState('hey')
+    const [error,setError] = useState('')
+    function getSortedTickers(data,type){
+        return data.filter((d)=>d.signal === type).sort((a, b) => a.ticker.localeCompare(b.ticker))
+    }
     async function  getData(){
         setLoading(true);
         try{
             let res = await fetch(`${API_BASE_URL}/sma/all`);
         let data = await res.json();
         setSmaDetails({
-            sell: data.filter((d)=>d.signal === SELL_SIGNAL),
-            buy:data.filter((d)=>d.signal===BUY_SIGNAL),
-            noSignal: data.filter((d)=>d.signal===NO_SIGNAL)
+            sell: getSortedTickers(data,SELL_SIGNAL),
+            buy:getSortedTickers(data,BUY_SIGNAL),
+            noSignal: getSortedTickers(data,NO_SIGNAL)
         })
         }
         catch(e){
@@ -44,18 +43,18 @@ function SmaTable() {
         finally{
             setLoading(false)
         }
-        
-        
     }
     useEffect(()=>{
         getData();
     },[])
   return (
     <div>
-        <h1 className='text-center'>V40 SMA Strategy</h1>
+        <h2 className='text-center'>V40 SMA Strategy</h2>
         {error&&<div className='error-message'>{error}</div>}
         {loading?<div>Loading...</div>:<div>
-            {config?.map((c)=><GetComponent title={c.title} data={smaDetails[c.accessor]}/>)}
+            {config?.map((c)=><Accordion title={c.title}>
+        <Table stocks={smaDetails[c.accessor]}/>
+    </Accordion>)}
         </div>
         }
         

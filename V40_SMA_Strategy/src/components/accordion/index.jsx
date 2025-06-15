@@ -6,7 +6,7 @@ function Accordion({title,children}) {
     const [open,setOpen] = useState(true);
   return (
     <div>
-        <h2 className='title' onClick={()=>setOpen(!open)}>{open?<ArrowDropDownIcon sx={{ fontSize: 30 }}/>:<ArrowRightIcon sx={{ fontSize: 30 }}/>} {title}</h2>
+        <h3 className='title' onClick={()=>setOpen(!open)}>{open?<ArrowDropDownIcon sx={{ fontSize: 30 }}/>:<ArrowRightIcon sx={{ fontSize: 30 }}/>} {title}</h3>
         {open?children:''}
     </div>
   )
