@@ -1,14 +1,8 @@
 import React from "react";
 import './index.css'
-const columnConfigs = [
-  { accessor: "ticker", label: "Company" },
-  { accessor: "last_closing_price", label: "Last Closing Price" },
-  { accessor: "sma_20", label: "SMA 20" },
-  { accessor: "sma_50", label: "SMA 50" },
-  { accessor: "sma_200", label: "SMA 200" }
-];
 
-const Table = ({stocks=[]}) => {
+
+const Table = ({stocks=[],columnConfigs}) => {
 
   return (
     <div className="table-container">

@@ -45,3 +45,17 @@
 .cursor-pointer{
   cursor: pointer;
 }
+.display-flex{
+  display: flex;
+  flex-direction: row;
+}
+.ml-auto{
+  margin-left: auto;
+}
+
+.fs-md{
+  font-size: 13px;
+}
+.mb-10{
+  margin-bottom: 10px;
+}

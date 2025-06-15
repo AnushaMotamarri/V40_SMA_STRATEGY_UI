@@ -9,6 +9,10 @@ function Home() {
     key:'v40sma',
     label:'V40 SMA Strategy 🚀',
     url:'/v40sma'
+  },{
+    key:'research-reports',
+    label:'Research Reports 🧪',
+    url:'/research-reports'
   }]
   return (
     <div className='strategies-container'>

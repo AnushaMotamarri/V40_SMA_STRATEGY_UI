@@ -17,7 +17,13 @@ const config =[{
     title:'No Signal',
     accessor:'noSignal'
 }]
-
+const columnConfigs = [
+    { accessor: "ticker", label: "Company" },
+    { accessor: "last_closing_price", label: "Last Closing Price" },
+    { accessor: "sma_20", label: "SMA 20" },
+    { accessor: "sma_50", label: "SMA 50" },
+    { accessor: "sma_200", label: "SMA 200" }
+  ];
 
 function SmaTable() {
     const [smaDetails,setSmaDetails] = useState({});
@@ -67,7 +73,7 @@ function SmaTable() {
         {error&&<div className='error-message'>{error}</div>}
         <div>
             {config?.map((c)=><Accordion title={<span>{c.title} {smaDetails[c.accessor]?.length?<span className='stock-number'>({smaDetails[c.accessor]?.length})</span>:''}</span>}>
-            {loading?<TableShimmer/>:<Table stocks={smaDetails[c.accessor]}/>}
+            {loading?<TableShimmer/>:<Table columnConfigs={columnConfigs} stocks={smaDetails[c.accessor]}/>}
     </Accordion>)}
         </div>
         
