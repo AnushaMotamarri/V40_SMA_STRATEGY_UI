@@ -66,7 +66,7 @@ function SmaTable() {
         <h2 className='text-center'>V40 SMA Strategy {lastUpdatedTime?<span className='fs-10'>({lastUpdatedTime})</span>:''}</h2>
         {error&&<div className='error-message'>{error}</div>}
         <div>
-            {config?.map((c)=><Accordion title={c.title}>
+            {config?.map((c)=><Accordion title={<span>{c.title} {smaDetails[c.accessor]?.length?<span className='stock-number'>({smaDetails[c.accessor]?.length})</span>:''}</span>}>
             {loading?<TableShimmer/>:<Table stocks={smaDetails[c.accessor]}/>}
     </Accordion>)}
         </div>
