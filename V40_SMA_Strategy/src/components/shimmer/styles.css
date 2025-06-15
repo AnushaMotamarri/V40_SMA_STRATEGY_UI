@@ -1,0 +1,49 @@
+.table-container {
+    overflow-x: auto;
+    width: 100%;
+    
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    padding: 0.75rem 1rem; /* px-4 py-3 */
+    text-align: left;
+  }
+  
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+  }
+  
+  .shimmer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150px;
+    height: 100%;
+    width: 150px;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent 100%
+    );
+    animation: shimmerMove 1.2s infinite;
+  }
+  
+  @keyframes shimmerMove {
+    0% {
+      left: -150px;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  

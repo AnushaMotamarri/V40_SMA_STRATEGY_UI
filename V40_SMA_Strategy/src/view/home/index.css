@@ -11,8 +11,7 @@
     font-weight: 600;
 }
 .item-btn:hover{
-    /* background-color: #eee; */
-    box-shadow: 0 0 3px #e0e0e0;
+    box-shadow: 0 0 3px var(--box-shadow-color);
 }
 .strategies-title{
     margin-bottom: 0px;
@@ -24,4 +23,7 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
+}
+.more-soon{
+    color: var(--success-color);
 }

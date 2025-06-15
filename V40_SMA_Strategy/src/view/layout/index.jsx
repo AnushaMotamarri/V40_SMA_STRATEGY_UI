@@ -1,14 +1,16 @@
 // components/Layout.jsx
 import { Outlet } from 'react-router-dom';
 import Navbar from '../../components/navbar/index.jsx';
+import './index.css'
 
-export default function Layout() {
+export default function Layout({ theme, setTheme }) {
   return (
     <>
-      <Navbar />
-      <main style={{ padding: '20px' }}>
-        <Outlet /> {/* This renders the matched child route */}
-      </main>
+      <Navbar theme={theme} setTheme={setTheme} />
+      <section className='p-20'>
+      <Outlet />
+      </section>
+      
     </>
   );
 }

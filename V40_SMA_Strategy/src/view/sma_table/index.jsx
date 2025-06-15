@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react'
 import Table from '../../components/table'
 import Accordion from '../../components/accordion'
 import './index.css'
+import TableShimmer from '../../components/shimmer/table_shimmer'
 const SELL_SIGNAL = "SELL"
 const BUY_SIGNAL = "BUY"
 const NO_SIGNAL = "NO_SIGNAL"
@@ -51,12 +52,12 @@ function SmaTable() {
     <div>
         <h2 className='text-center'>V40 SMA Strategy</h2>
         {error&&<div className='error-message'>{error}</div>}
-        {loading?<div>Loading...</div>:<div>
+        <div>
             {config?.map((c)=><Accordion title={c.title}>
-        <Table stocks={smaDetails[c.accessor]}/>
+            {loading?<TableShimmer/>:<Table stocks={smaDetails[c.accessor]}/>}
     </Accordion>)}
         </div>
-        }
+        
         
     </div>
   )

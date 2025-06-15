@@ -3,8 +3,15 @@
     font-weight: 600;
     cursor: pointer;
 }
-
+.navbar{
+    display: flex;
+    background-color: var(--primary-color);
+    color: #fff;
+}
+.theme{
+    margin-left: auto;
+}
 .navbar{
     padding: 20px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--primary-color);
 }

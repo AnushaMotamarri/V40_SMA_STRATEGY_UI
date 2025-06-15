@@ -1,18 +1,42 @@
+
+.dark{
+  --background-color: #141313;
+  background-color: var(--background-color);
+  --text-color: #fff;
+  --box-shadow-color:#282828;
+  --table-border-color:#303030;
+  --table-header-background-color:#202020;
+  --primary-color:#B388FF ;
+}
+.light{
+  --background-color: #fff;
+  --primary-color:#625AFC ;
+  --box-shadow-color: rgba(0, 0, 0, 0.1) ;
+  --border-color:#ccc;
+  --table-header-bg-color:#9590f8;
+  --table-border-color:#d9e4f8;
+  --table-header-background-color:#F0F0F5;
+  --success-color:green;
+  --error-color:red;
+  background-color: var(--background-color);
+  --text-color: #333
+
+}
 :root {
+
+  
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
   width: 100vw;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 a {
   font-weight: 500;
   color: #646cff;
@@ -56,8 +80,7 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: var(--text-color);
   }
   a:hover {
     color: #747bff;
