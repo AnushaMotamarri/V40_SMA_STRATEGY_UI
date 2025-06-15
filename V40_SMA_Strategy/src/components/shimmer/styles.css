@@ -18,7 +18,7 @@
   .shimmer {
     position: relative;
     overflow: hidden;
-    background-color: #e0e0e0;
+    background-color: var(--shimmer-bg);
     border-radius: 4px;
   }
   
