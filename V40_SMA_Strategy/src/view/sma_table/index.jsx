@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import React,{useEffect,useState,useRef} from 'react'
 import Table from '../../components/table'
 import Accordion from '../../components/accordion'
 import './index.css'
@@ -21,13 +21,16 @@ const config =[{
 
 function SmaTable() {
     const [smaDetails,setSmaDetails] = useState({});
-    const [loading,setLoading] = useState(true);
-    const [error,setError] = useState('')
+    const [loading,setLoading] = useState(false);
+    const [error,setError] = useState('');
+    const prevControllerRef = useRef(null);
+
     function getSortedTickers(data,type){
         return data.filter((d)=>d.signal === type).sort((a, b) => a.ticker.localeCompare(b.ticker))
     }
     async function  getData(){
         setLoading(true);
+        prevControllerRef.current=true
         try{
             let res = await fetch(`${API_BASE_URL}/sma/all`);
         let data = await res.json();
@@ -46,8 +49,12 @@ function SmaTable() {
         }
     }
     useEffect(()=>{
-        getData();
-    },[])
+        if(!loading&&!prevControllerRef.current){
+            
+            getData();
+        }
+       
+    },[loading])
   return (
     <div>
         <h2 className='text-center'>V40 SMA Strategy</h2>
