@@ -10,6 +10,7 @@ const FILES_TO_CACHE = [
 
 // ✅ Install event — cache static files
 self.addEventListener('install', (event) => {
+  
   console.log('[SW] Install');
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {

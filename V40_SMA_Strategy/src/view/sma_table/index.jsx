@@ -55,12 +55,12 @@ function SmaTable() {
         }
     }
     useEffect(()=>{
-        if(!loading&&!prevControllerRef.current){
+        if(!prevControllerRef.current){
             
             getData();
         }
        
-    },[loading])
+    },[])
   return (
     <div>
         <h2 className='text-center'>V40 SMA Strategy {lastUpdatedTime?<span className='fs-10'>({lastUpdatedTime})</span>:''}</h2>

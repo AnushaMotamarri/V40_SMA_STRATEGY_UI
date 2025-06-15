@@ -1,5 +1,5 @@
 // components/Navbar.jsx
-import React,{useState} from 'react';
+import React from 'react';
 import './index.css'
 import { useNavigate } from 'react-router-dom';
 import LightModeIcon from '@mui/icons-material/LightMode';
