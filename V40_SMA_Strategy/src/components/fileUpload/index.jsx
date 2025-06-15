@@ -31,7 +31,7 @@ const FileUploader = ({ onDataParsed }) => {
       <input
         id="file-upload"
         type="file"
-        accept=".csv"
+        accept=".csv,text/csv,application/vnd.ms-excel"
         onChange={handleFileUpload}
         style={{ display: 'none' }}
       />

@@ -22,7 +22,7 @@ const Table = ({stocks=[],columnConfigs}) => {
                <tr key={stock.ticker}>
                    
                {columnConfigs?.map((col) => (
-                   <td key={col.accessor}>{stock[col.accessor]}</td>
+                   <td key={col.accessor}>{col.cellRenderer?col.cellRenderer(stock):stock[col.accessor]}</td>
                ))}
                </tr>
            ))}

@@ -28,3 +28,7 @@ table {
     border-radius: 12px;
     box-shadow: 0 2px 8px var(--box-shadow-color);
   }
+  .table-body-container{
+    height: 500px;
+    overflow: auto;
+  }

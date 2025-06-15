@@ -59,3 +59,11 @@
 .mb-10{
   margin-bottom: 10px;
 }
+.text-green{
+  background-color: rgb(88, 164, 88);
+  color: #fff;
+  border-radius: 5px;
+}
+.text-bold{
+  font-weight: 600;
+}

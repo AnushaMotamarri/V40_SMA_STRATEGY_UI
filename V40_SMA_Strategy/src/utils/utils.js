@@ -9,40 +9,31 @@ const getCSVFilename = (prefix = "data") => {
   
   return `${prefix}-${dd}/${mm}/${yyyy}-${hh}:${min}.csv`;
 };
+export const convertToCSV = (data, columnConfigs) => {
+  if (!Array.isArray(data) || data.length === 0) return '';
 
-function downloadJSONAsCSV(jsonData, filename ='data.csv') {
-    if (!jsonData || !jsonData.length) {
-      console.error('No data to convert');
-      return;
-    }
-  
-    const headers = Object.keys(jsonData[0]);
-    const csvRows = [];
-  
-    // Add headers
-    csvRows.push(headers.join(','));
-  
-    // Add rows
-    for (const row of jsonData) {
-      const values = headers.map(header => {
-        let val = row[header];
-        // Escape double quotes
-        val = (val === null || val === undefined) ? '' : val.toString().replace(/"/g, '""');
-        return `"${val}"`;
-      });
-      csvRows.push(values.join(','));
-    }
-  
-    // Create blob and trigger download
-    const csvString = csvRows.join('\n');
-    const blob = new Blob([csvString], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-  
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    a.click();
-    window.URL.revokeObjectURL(url);
+  const headers = columnConfigs.map(col => `"${col.label}"`);
+  console.log(headers)
+  const rows = data.map(row =>
+    columnConfigs.map(col => {
+      const val = row[col.accessor];
+      return val
+    })
+  );
+  const res = [headers, ...rows].map(line => line.join(',')).join('\n');
+  return res
+};
+
+
+function downloadJSONAsCSV(csvString, filename ='data.csv') {
+  const blob = new Blob([csvString], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
   }
   
   const handleDownload = (path) => {
