@@ -7,9 +7,11 @@
   --table-border-color:#303030;
   --table-header-background-color:#202020;
   --primary-color:#B388FF ;
-  --shimmer-bg:#2a2a2a
+  --shimmer-bg:#2a2a2a;
+  --note-color:#bbb
 }
 .light{
+  --text-color:#333;
   --background-color: #fff;
   --primary-color:#625AFC ;
   --box-shadow-color: rgba(0, 0, 0, 0.1) ;
@@ -17,20 +19,21 @@
   --table-header-bg-color:#9590f8;
   --table-border-color:#d9e4f8;
   --table-header-background-color:#F0F0F5;
-  --success-color:green;
-  --error-color:red;
+
   background-color: var(--background-color);
-  --text-color: #333;
-  --shimmer-bg:#e0e0e0
+  --shimmer-bg:#e0e0e0;
+  --note-color:#bbb;
 
 }
 :root {
+  --success-color:green;
+  --error-color:red;
 
-  
+  --nav-bar-height: 70px;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
+  overflow: hidden;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   width: 100vw;
@@ -38,6 +41,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--text-color);
 }
 a {
   font-weight: 500;
@@ -78,16 +82,4 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: var(--text-color);
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }

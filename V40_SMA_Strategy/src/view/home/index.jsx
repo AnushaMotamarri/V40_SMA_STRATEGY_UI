@@ -14,7 +14,7 @@ function Home() {
     <div className='strategies-container'>
       <h2 className='strategies-title'>Strategies</h2>
       {config.map((c)=><div key={c.key} className='item-btn' onClick={()=>navigate(c.url)}>{c.label}</div>)}
-      <div className='more-soon'>More coming soon...!</div>
+      <div className='more-soon'>More strategies coming soon...!</div>
     </div>
   )
 }
