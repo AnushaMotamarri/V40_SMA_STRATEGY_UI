@@ -79,7 +79,7 @@ function ResearchReports() {
         <h2>Results <span>({result?.length || 0})</span></h2>
         <span className='ml-auto display-flex fs-md '><a className='flex-center' onClick={()=>downloadJSONAsCSV(convertToCSV(result,columnConfigs),getCSVFilename('research'))}><DownloadIcon style={{fontSize:'13px'}}/> Download </a></span>
         </div>
-        <Table columnConfigs={columnConfigs} stocks={result}/>
+        <Table columnConfigs={columnConfigs} rows={result}/>
         </div>
         }
     </div>

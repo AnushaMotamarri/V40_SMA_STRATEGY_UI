@@ -105,3 +105,9 @@ h3{
   color:#666;
   font-size: 13px;
 }
+.overflow-hidden{
+  overflow: hidden;
+}
+.font-bold{
+  font-weight: bold;
+}

@@ -73,7 +73,7 @@ function SmaTable() {
         {error&&<div className='error-message'>{error}</div>}
         <div>
             {config?.map((c)=><Accordion title={<span>{c.title} {smaDetails[c.accessor]?.length?<span className='stock-number'>({smaDetails[c.accessor]?.length})</span>:''}</span>}>
-            {loading?<TableShimmer/>:<Table columnConfigs={columnConfigs} stocks={smaDetails[c.accessor]}/>}
+            {loading?<TableShimmer/>:<Table columnConfigs={columnConfigs} rows={smaDetails[c.accessor]}/>}
     </Accordion>)}
         </div>
         

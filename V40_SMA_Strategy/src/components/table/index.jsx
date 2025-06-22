@@ -1,35 +1,46 @@
-import React from "react";
+import { FixedSizeList as List } from 'react-window';
+import React from 'react';
 import './index.css'
-
-
-const Table = ({stocks=[],columnConfigs}) => {
+const Row = ({ index, style, data }) => {
+  const { rows, columnConfigs } = data;
+  const token = rows[index];
 
   return (
-    <div className="table-container">
-       {!stocks?.length ? <div className="no-data-row">No Data Found.</div>:
-       <table border="1" cellPadding="10">
-       <thead>
-         <tr>
-           
-           {columnConfigs?.map((col) => (
-             <th key={col.accessor}>{col.label}</th>
-           ))}
-         </tr>
-       </thead>
-       <tbody>
-         
-           {stocks?.map((stock) => (
-               <tr key={stock.ticker}>
-                   
-               {columnConfigs?.map((col) => (
-                   <td key={col.accessor}>{col.cellRenderer?col.cellRenderer(stock):stock[col.accessor]}</td>
-               ))}
-               </tr>
-           ))}
-       </tbody>
-     </table>
-       }
-      
+    <div style={style} className="row-container flex p-2 border-b border-gray-200">
+      {columnConfigs?.map((config, idx) => (
+        <div className="w-1-3 cell" key={`row-${idx}`}>
+          {config.cellRenderer ? config.cellRenderer(token) : token[config.accessor]}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const Table = ({ rows=[], columnConfigs }) => {
+  const rowHeight = 40;
+const maxHeight = 450;
+const dynamicHeight = Math.min(rows.length * rowHeight, maxHeight);
+  return (
+    <div className=" overflow-hidden h-500px">
+      <div className="header-container">
+        {columnConfigs.map((config, idx) => {
+          return (
+            <div className="w-1-3 cell" key={`header-${idx}`}>
+              {config.label}
+            </div>
+          );
+        })}
+      </div>
+      <List
+        height={dynamicHeight}
+        itemCount={rows.length}
+        itemSize={40}
+        itemData={{ rows, columnConfigs }}
+        width="100%"
+        className='list-container'
+      >
+        {Row}
+      </List>
     </div>
   );
 };
